@@ -25,8 +25,10 @@ Having the clean permalinks allows for easy access and understanding exactly whe
 
 Also having a template variable stored in the page allows for differenciating appearance 
 
-Listing
+**Listing**
 Inline-style: 
 ![alt text](http://res.cloudinary.com/dp20nga5l/image/upload/v1464089853/Screenshot_2016-05-24_12.36.40_qobezn.png "Listing layout view")
 
-
+**Legislation**
+Inline-style: 
+![alt text](http://res.cloudinary.com/dp20nga5l/image/upload/v1464090019/Screenshot_2016-05-24_12.40.06_xeupjv.png "Legislation layout view")
