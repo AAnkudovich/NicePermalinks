@@ -58,6 +58,23 @@ class PagesController < ApplicationController
               @page.update(pageHash)
             end
           end
+
+        @childpages = Page.where(parentPage: @page.id)
+        @childpages.each do |childpage|
+          childUpdateHash = Hash.new
+          @makeTitleintoURL = childpage.title.parameterize
+          childUpdateHash["slug"]=[@page.slug, @makeTitleintoURL].join("/")
+          childpage.update(childUpdateHash)
+
+          @grandchildpages = Page.where(parentPage: childpage.id)
+            @grandchildpages.each do |grandchildpage|
+              grandchildUpdateHash = Hash.new
+              @makeTitleintoURLgrand = grandchildpage.title.parameterize
+              grandchildUpdateHash["slug"]=[childpage.slug, @makeTitleintoURLgrand].join("/")
+              grandchildpage.update(grandchildUpdateHash)
+
+            end
+        end
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
