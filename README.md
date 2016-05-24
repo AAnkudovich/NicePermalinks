@@ -1,24 +1,20 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
+Pretty Permalinks
 
 * Ruby version
+	2.3.1
+* Rails version
+	5.0.0.rc1
+* Database
+	MySQL ( gem 'mysql2', '>= 0.3.18', '< 0.5')
 
-* System dependencies
+Following some of the tuttorial http://blog.teamtreehouse.com/creating-vanity-urls-in-rails
 
-* Configuration
+The idea is to generate a SEO friendly also as human readable url for a publishing set up
 
-* Database creation
+Instead of having 
 
-* Database initialization
+`http://localhost:3000/pages/1` 
 
-* How to run the test suite
+I would like to see it closer to this
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`http://localhost:3000/tca-1997%2Fpart-1-interpretation-ss-1-11`
