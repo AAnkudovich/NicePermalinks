@@ -45,12 +45,12 @@
      jQuery(document).ready(function($) {
       
     $("input#page_title").keyup(function(e){
-      var val = $(this).val();
+      var val = $(this).val().toLowerCase();
       val = val.replace(/[^\w]+/g, "-");
       $("input#page_slug").val(val);
     });
 
-   
+
 
 });
      </script>

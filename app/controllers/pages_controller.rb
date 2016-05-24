@@ -26,8 +26,11 @@ class PagesController < ApplicationController
   # POST /pages.json
   def create
     @page = Page.new(page_params)
+    if @page.parentPage != nil 
     @parentPage = Page.find(@page.parentPage)
     @page.slug = @parentPage.slug + "/" + @page.slug
+  end
+    
 
     respond_to do |format|
       if @page.save
