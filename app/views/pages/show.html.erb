@@ -5,25 +5,18 @@
   <%= @page.title %>
 </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @page.content %>
-</p>
 
-<p>
-  <strong>Parentpage:</strong>
-  <%= @page.parentPage %>
-</p>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @page.slug %>
-</p>
 
-<p>
-  <strong>Template:</strong>
-  <%= @page.template %>
-</p>
-
+<% if @page.template == "Listing"%>
+<ul>
+<% @childpages =Page.where(parentPage: @page.id)%>
+ <% @childpages.each do |page| %>
+    <li><%= link_to page.title, page %></li>
+ <% end %>
+</ul>
+<% elsif @page.template == "Legislation"%>
+<%= @page.content %>
+<%end%>
 <%= link_to 'Edit', edit_page_path(@page) %> |
 <%= link_to 'Back', pages_path %>
