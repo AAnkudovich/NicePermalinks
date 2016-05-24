@@ -35,41 +35,4 @@ Also having a template variable stored in the page allows for differenciating ap
 
 Also in the page controller we have custom version of update that allows for us to update the slugs of all children pages when updating a parent page.
 
-```def update
-    respond_to do |format|
-      # allow for later assignment of parent page
-      if @page.update(page_params)
-        if @page.parentPage != nil
-          @parentPage = Page.find(@page.parentPage)
-          if !@page.slug.include? @parentPage.slug
-              
-              pageHash= Hash.new
-              pageHash["slug"]=@parentPage.slug + "/" + @page.title.parameterize
-              @page.update(pageHash)
-            end
-          end
-
-        @childpages = Page.where(parentPage: @page.id)
-        @childpages.each do |childpage|
-          childUpdateHash = Hash.new
-          @makeTitleintoURL = childpage.title.parameterize
-          childUpdateHash["slug"]=[@page.slug, @makeTitleintoURL].join("/")
-          childpage.update(childUpdateHash)
-
-          @grandchildpages = Page.where(parentPage: childpage.id)
-            @grandchildpages.each do |grandchildpage|
-              grandchildUpdateHash = Hash.new
-              @makeTitleintoURLgrand = grandchildpage.title.parameterize
-              grandchildUpdateHash["slug"]=[childpage.slug, @makeTitleintoURLgrand].join("/")
-              grandchildpage.update(grandchildUpdateHash)
-
-            end
-        end
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
-        format.json { render :show, status: :ok, location: @page }
-      else
-        format.html { render :edit }
-        format.json { render json: @page.errors, status: :unprocessable_entity }
-      end
-    end
-  end```
+![alt text](http://res.cloudinary.com/dp20nga5l/image/upload/v1464090543/Screenshot_2016-05-24_12.48.51_x34cqm.png "Legislation layout view")
