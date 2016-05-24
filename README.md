@@ -35,7 +35,7 @@ Also having a template variable stored in the page allows for differenciating ap
 
 Also in the page controller we have custom version of update that allows for us to update the slugs of all children pages when updating a parent page.
 
-def update
+```def update
     respond_to do |format|
       # allow for later assignment of parent page
       if @page.update(page_params)
@@ -72,4 +72,4 @@ def update
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
-  end
+  end```
