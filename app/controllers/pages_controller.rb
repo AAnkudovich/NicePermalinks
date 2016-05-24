@@ -47,7 +47,17 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1.json
   def update
     respond_to do |format|
+      # allow for later assignment of parent page
       if @page.update(page_params)
+        if @page.parentPage != nil
+          @parentPage = Page.find(@page.parentPage)
+          if !@page.slug.include? @parentPage.slug
+              
+              pageHash= Hash.new
+              pageHash["slug"]=@parentPage.slug + "/" + @page.title.parameterize
+              @page.update(pageHash)
+            end
+          end
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
